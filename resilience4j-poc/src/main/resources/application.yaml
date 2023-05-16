@@ -1,3 +1,9 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
 resilience4j.retry:
   instances:
     failure-endpoint:
@@ -6,4 +12,18 @@ resilience4j.retry:
       enableExponentialBackoff: true
       exponentialBackoffMultiplier: 2
       retryExceptions:
+        - feign.FeignException$InternalServerError
+
+resilience4j.circuitbreaker:
+  configs:
+    default:
+      registerHealthIndicator: true
+  instances:
+    failure-endpoint:
+      failureRateThreshold: 30
+      registerHealthIndicator: true
+      slidingWindowSize: 10
+      waitDurationInOpenState: 60000
+      permittedNumberOfCallsInHalfOpenState: 3
+      recordExceptions:
         - feign.FeignException$InternalServerError

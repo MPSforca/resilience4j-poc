@@ -8,13 +8,14 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("/retry")
-class RetryController {
+@RequestMapping("/circuit-breaker")
+class CircuitBreakerController {
 
     @Autowired
     private lateinit var failureServiceClient: FailureServiceClient
 
     @GetMapping
-    fun retry(): DefaultResponse =
-        DefaultResponse(failureServiceClient.testRetry(failureRate = 0.7).response)
+    fun circuitBreaker(): DefaultResponse = DefaultResponse(
+        failureServiceClient.testCircuitBreaker(failureRate = 0.9).response
+    )
 }
