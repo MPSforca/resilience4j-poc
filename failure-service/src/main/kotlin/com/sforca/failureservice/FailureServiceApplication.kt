@@ -7,5 +7,5 @@ import org.springframework.boot.runApplication
 class FailureServiceApplication
 
 fun main(args: Array<String>) {
-	runApplication<FailureServiceApplication>(*args)
+    runApplication<FailureServiceApplication>(*args)
 }
