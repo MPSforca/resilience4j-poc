@@ -38,3 +38,10 @@ resilience4j.bulkhead:
     response-time-endpoint:
       maxConcurrentCalls: 10
       maxWaitDuration: 10ms
+
+resilience4j.ratelimiter:
+  instances:
+    test-service:
+      limitForPeriod: 10
+      limitRefreshPeriod: 1s
+      timeoutDuration: 0

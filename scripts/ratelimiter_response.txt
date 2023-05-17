@@ -1,0 +1,35 @@
+
+          /\      |‾‾| /‾‾/   /‾‾/   
+     /\  /  \     |  |/  /   /  /    
+    /  \/    \    |     (   /   ‾‾\  
+   /          \   |  |\  \ |  (‾)  | 
+  / __________ \  |__| \__\ \_____/ .io
+
+  execution: local
+     script: ratelimiter-script-k6.js
+     output: -
+
+  scenarios: (100.00%) 1 scenario, 15 max VUs, 1m0s max duration (incl. graceful stop):
+           * default: 15 looping VUs for 30s (gracefulStop: 30s)
+
+
+     data_received..................: 83 kB  2.7 kB/s
+     data_sent......................: 41 kB  1.4 kB/s
+     http_req_blocked...............: avg=174.42µs min=1.51µs  med=9.89µs  max=1.83ms   p(90)=529.21µs p(95)=637.33µs
+     http_req_connecting............: avg=116.41µs min=0s      med=0s      max=1.68ms   p(90)=359.01µs p(95)=455.17µs
+     http_req_duration..............: avg=6.65ms   min=1.72ms  med=6.63ms  max=17.64ms  p(90)=8.86ms   p(95)=10.87ms 
+       { expected_response:true }...: avg=7.01ms   min=2.85ms  med=6.83ms  max=17.64ms  p(90)=8.9ms    p(95)=12.51ms 
+     http_req_failed................: 33.33% ✓ 150       ✗ 300 
+     http_req_receiving.............: avg=111.86µs min=11.66µs med=73µs    max=2.65ms   p(90)=167.73µs p(95)=286.99µs
+     http_req_sending...............: avg=58.79µs  min=6.9µs   med=41.36µs max=824.12µs p(90)=108.95µs p(95)=135.75µs
+     http_req_tls_handshaking.......: avg=0s       min=0s      med=0s      max=0s       p(90)=0s       p(95)=0s      
+     http_req_waiting...............: avg=6.48ms   min=1.61ms  med=6.52ms  max=17.25ms  p(90)=8.44ms   p(95)=10.66ms 
+     http_reqs......................: 450    14.888006/s
+     iteration_duration.............: avg=1s       min=1s      med=1s      max=1.01s    p(90)=1s       p(95)=1.01s   
+     iterations.....................: 450    14.888006/s
+     vus............................: 15     min=15      max=15
+     vus_max........................: 15     min=15      max=15
+
+
+running (0m30.2s), 00/15 VUs, 450 complete and 0 interrupted iterations
+default ✓ [======================================] 15 VUs  30s
