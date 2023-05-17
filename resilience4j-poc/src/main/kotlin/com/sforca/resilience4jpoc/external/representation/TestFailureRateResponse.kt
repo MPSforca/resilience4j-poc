@@ -1,5 +1,5 @@
 package com.sforca.resilience4jpoc.external.representation
 
-data class TestResponse(
+data class TestFailureRateResponse(
     val response: String
 )

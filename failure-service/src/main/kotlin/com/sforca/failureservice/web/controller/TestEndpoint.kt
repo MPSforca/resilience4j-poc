@@ -24,9 +24,7 @@ class TestEndpoint {
             throw ResponseStatusException(HttpStatus.BAD_REQUEST, "Failure rate must be between 0 and 1")
         }
         logger.info(
-                "Received a new request with failureRate {} and error status code {}",
-                failureRate,
-                errorStatusCode
+                "Received a new request with failureRate {} and error status code {}", failureRate, errorStatusCode
         )
         val random = Random.nextDouble(0.0, 1.0)
         if (random > failureRate) {
@@ -42,6 +40,7 @@ class TestEndpoint {
     fun testResponseTime(@RequestParam(name = "responseTime", defaultValue = "2000") responseTime: Long
     ): ResponseTimeResponse {
         Thread.sleep(responseTime)
-        return ResponseTimeResponse("Successful response after waiting for ${responseTime / 1000} seconds")
+        logger.info("Sending the response after {} ms", responseTime)
+        return ResponseTimeResponse("Successful response after waiting for $responseTime ms")
     }
 }

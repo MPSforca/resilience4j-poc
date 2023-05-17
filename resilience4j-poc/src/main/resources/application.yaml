@@ -4,6 +4,11 @@ management:
       exposure:
         include: "*"
 
+server:
+  tomcat:
+    threads:
+      max: 15
+
 resilience4j.retry:
   instances:
     failure-endpoint:
@@ -27,3 +32,9 @@ resilience4j.circuitbreaker:
       permittedNumberOfCallsInHalfOpenState: 3
       recordExceptions:
         - feign.FeignException$InternalServerError
+
+resilience4j.bulkhead:
+  instances:
+    response-time-endpoint:
+      maxConcurrentCalls: 10
+      maxWaitDuration: 10ms
